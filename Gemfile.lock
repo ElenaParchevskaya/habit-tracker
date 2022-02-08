@@ -123,6 +123,9 @@ GEM
     minitest (5.15.0)
     msgpack (1.4.4)
     msgpack (1.4.4-java)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -176,6 +179,10 @@ GEM
       activesupport (= 7.0.1)
       bundler (>= 1.15.0)
       railties (= 7.0.1)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -216,6 +223,8 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -235,6 +244,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.5)
       tzinfo (>= 1.0.0)
+    uri (0.11.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -268,12 +278,15 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
+  net-http
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.1)
+  rails-controller-testing
   redis (~> 4.0)
   rspec-rails (~> 5.0.0)
   selenium-webdriver
+  shoulda-matchers
   sprockets-rails
   stimulus-rails
   turbo-rails
