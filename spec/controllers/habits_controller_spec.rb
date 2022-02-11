@@ -3,6 +3,20 @@ require 'rails_helper'
 RSpec.describe HabitsController, type: :controller do
   let(:habit) { create(:habit) }
 
+  describe 'GET #index' do
+    let(:habits) { create_list(:habit, 3) }
+
+    before { get :index }
+
+    it 'populates an array of all habits' do
+      expect(assigns(:habits)).to match_array(habits)
+    end
+
+    it 'render index view' do
+      expect(response).to render_template :index
+    end
+  end
+
   describe 'GET #new' do
     before { get :new }
 
