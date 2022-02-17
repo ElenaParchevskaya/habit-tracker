@@ -34,8 +34,8 @@ RSpec.describe HabitsController, type: :controller do
       end
 
       it 'redirects to show view' do
-        request
-        expect(response).to render_template :show
+        post :create, params: { habit: attributes_for(:habit) }
+        expect(response).to redirect_to assigns(:habit)
       end
     end
 

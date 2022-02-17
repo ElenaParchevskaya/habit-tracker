@@ -2,15 +2,20 @@ class HabitsController < ApplicationController
   def index
     @habits = Habit.all
   end
+
+  def show
+    habit
+  end
+
   def new
-    habit = Habit.new
+    @habit = Habit.new
   end
 
   def create
     @habit = Habit.new(habit_params)
 
     if @habit.save
-      render :show
+      redirect_to @habit, notice: 'Your habit successfully created.'
     else
       render :new
     end
