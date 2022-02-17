@@ -26,7 +26,21 @@ feature 'User can create habit', "
     expect(page).to have_content 'description of the habit'
   end
 
-  scenario 'Authenticated user create a habit with errors'
+  scenario 'Authenticated user create a habit with errors' do
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_on 'Log in'
+
+    visit habits_path
+    click_on 'Create habit'
+
+    click_on 'Create'
+
+    expect(page).to have_content "Title can't be blank"
+  end
+
   scenario 'Unauthenticated user tries create a habit' do
     visit habits_path
     click_on 'Create habit'
