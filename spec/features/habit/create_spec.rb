@@ -27,5 +27,10 @@ feature 'User can create habit', "
   end
 
   scenario 'Authenticated user create a habit with errors'
-  scenario 'Unauthenticated user tries create a habit'
+  scenario 'Unauthenticated user tries create a habit' do
+    visit habits_path
+    click_on 'Create habit'
+
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  end
 end

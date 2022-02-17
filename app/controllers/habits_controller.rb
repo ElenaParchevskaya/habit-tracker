@@ -1,4 +1,6 @@
 class HabitsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+
   def index
     @habits = Habit.all
   end
