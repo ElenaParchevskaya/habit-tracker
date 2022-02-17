@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe HabitsController, type: :controller do
   let(:habit) { create(:habit) }
+  let(:user) { create(:user) }
+
+  before { login(user) }
 
   describe 'GET #index' do
     let(:habits) { create_list(:habit, 3) }
