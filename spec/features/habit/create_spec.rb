@@ -5,40 +5,31 @@ feature 'User can create habit', "
   As an authenticated user
   I'd like to be able to create habit
 " do
-  given(:user) { User.create!(email: 'user@test.com', password: '12345678') }
+  given(:user) { create(:user) }
 
-  scenario 'Authenticated user create a habit' do
-    visit new_user_session_path
+  describe 'Authenticated user' do
+    background do
+      sign_in(user)
+      
+      visit habits_path
+      click_on 'Create habit'
+    end
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+    scenario 'create a habit' do
+      fill_in 'Title', with: 'Name habit'
+      fill_in 'Description', with: 'description of the habit'
+      click_on 'Create'
 
-    visit habits_path
-    click_on 'Create habit'
+     expect(page).to have_content 'Your habit successfully created.'
+      expect(page).to have_content 'Name habit'
+      expect(page).to have_content 'description of the habit'
+    end
 
-    fill_in 'Title', with: 'Name habit'
-    fill_in 'Description', with: 'description of the habit'
-    click_on 'Create'
+    scenario 'create a habit with errors' do
+      click_on 'Create'
 
-    expect(page).to have_content 'Your habit successfully created.'
-    expect(page).to have_content 'Name habit'
-    expect(page).to have_content 'description of the habit'
-  end
-
-  scenario 'Authenticated user create a habit with errors' do
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
-
-    visit habits_path
-    click_on 'Create habit'
-
-    click_on 'Create'
-
-    expect(page).to have_content "Title can't be blank"
+      expect(page).to have_content "Title can't be blank"
+    end
   end
 
   scenario 'Unauthenticated user tries create a habit' do
