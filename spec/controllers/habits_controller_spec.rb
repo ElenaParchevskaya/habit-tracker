@@ -20,6 +20,18 @@ RSpec.describe HabitsController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    before { get :show, params: { id: habit } }
+
+    it 'assigns the requested question to @habit' do
+      expect(assigns(:habit)).to eq habit
+    end
+
+    it 'renders show view' do
+      expect(response).to render_template :show
+    end
+  end
+
   describe 'GET #new' do
     before { get :new }
 
