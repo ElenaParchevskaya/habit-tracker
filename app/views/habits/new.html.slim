@@ -1,0 +1,10 @@
+h1 New Habit
+
+= render 'shared/errors', resource: @habit
+
+= form_with model: @habit do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.label :description
+  = f.text_area :description
+  = f.submit 'Create'

@@ -1,0 +1,8 @@
+h1 Habit
+
+h2 = "Title: #{@habit.title}"
+div = "Author: #{@habit.author.email}"
+div = @habit.description
+
+- if current_user&.author_of?(@habit)
+   = link_to 'Delete habit', habit_path(@habit), method: :delete

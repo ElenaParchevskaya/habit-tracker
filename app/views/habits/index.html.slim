@@ -1,0 +1,8 @@
+h1 Habits
+
+p= link_to 'Create habit', new_habit_path
+
+ul
+  - @habits.each do |habit|
+    li
+      = link_to "#{habit.title}: #{habit.description}", habit_path(habit)

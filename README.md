@@ -1,24 +1,4 @@
-# README
+Habit Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The tracker helps to create a good habit and remove a bad habit. The user must create a habit: name, (good or bad habit), choose the intensity of maintaining the habit (days per week, days per month).
+Record progress every day. (tick - did. cross - did not)
