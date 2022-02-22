@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :habit do
-    title { "MyString" }
+    title { "MyTitle" }
     description { "MyText" }
+    association :author, factory: :user
 
     trait :invalid do
       title { nil }
